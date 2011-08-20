@@ -15,7 +15,7 @@
 %opening
 \title{Shell für Anfänger\\
 \large{Kurzüberblick über die häufigsten Befehle}}
-\author{Fachschaft Informatik}
+\author{Jens Dietze, Evgeni Golov, Janine Haas}
 \date{13.08.2011}
 
 
@@ -78,19 +78,19 @@
 	  d rwx rwx rwx
 	  \begin{itemize}
 	    \item d: es handelt sich um ein Verzeichnis (sonst "-" an erster Stelle)
-	    \item drei Gruppen mit \glqq rwx\grqq bzw. \glqq -\grqq an manchen stellen
+	    \item drei Gruppen mit \glqq rwx\grqq~ bzw. \glqq -\grqq ~an manchen stellen
 	      \begin{itemize}
-		\item r = Leseberechtigung
-		\item w = Schreibberechtigung
-		\item x = Ausführberechtigung
-		\item "-" = diese Berechtigung ist nicht gesetzt
-		\item Erste Gruppe ("rwx"): gilt für den Besitzer der Datei
+		\item \texttt{r} = Leseberechtigung
+		\item \texttt{w} = Schreibberechtigung
+		\item \texttt{x} = Ausführberechtigung
+		\item \texttt{\glqq -\grqq} = diese Berechtigung ist nicht gesetzt
+		\item Erste Gruppe (\glqq \texttt{rwx}\grqq ): gilt für den Besitzer der Datei
 		\item Zweite Gruppe: gilt für die Gruppe der Datei
 		\item Dritte Gruppe: gilt für alle anderen
 	      \end{itemize}
 	  \end{itemize}
 	\item Der Besitzer: \\
-	  "root root" = Besitzer: "root", Gruppe: "root"
+	  \texttt{root root} ~bedeutet: Besitzer: "root", Gruppe: "root"
 	\item Danach die Größe (4096 Byte)
 	\item Veränderungsdatum
 	\item Name
@@ -102,7 +102,7 @@
 	  \befehl{mkdir <ordner>} 
 	\item Die komplette Ordnerstruktur /<ordner1>/<ordner2>/<ordner3> erstellen: 
 	  \befehl{mkdir -p /<ordner1>/<ordner2>/<ordner3>}
-	\item Eine (leere) Datei erstellen, wenn sie bereits vorhanden ist, das Änderungsdatum auf JETZT setzen: 
+	\item Eine (leere) Datei erstellen, wenn sie bereits vorhanden ist, das Änderungsdatum auf die aktuelle Zeit setzen: 
 	  \befehl{touch <dateiname>}
       \end{itemize}
     \subsection{Wie löscht man diese?}
@@ -111,9 +111,9 @@
 	  \befehl{rm <dateiname>}
 	\item Mehrere Dateien löschen:
 	  \begin{itemize}
-	    \item Alle jpg-Dateien im aktüllen Ordner: 
+	    \item Alle jpg-Dateien im aktuellen Ordner: 
 	      \befehl{rm *.jpg}
-	    \item Alle Dateien, die mit "a" anfangen: 
+	    \item Alle Dateien, die mit \glqq a\grqq anfangen: 
 	      \befehl{rm a*}
 	    \item Einen Ordner inklusive Unterordner und aller Dateien im Ordner: 
 	      \befehl{rm -r <ordnername>}
@@ -136,14 +136,14 @@
       \item \texttt{/} \\ Das "root-Verzeichnis", der Anfang von allem so zu sagen, die Wurzel.
       \item \texttt{/bin} \\ Wichtige Binaries (Programme) die für den Systemstart benötigt werden.
       \item \texttt{/boot} \\ Kernel und Bootloaderconfig.
-      \item \texttt{/dev} \\ Auch Geräte sind unter Linux "Dateien", solche speziellen findet man hier, z.B. ist /dev/sda die erste Festplatte des Systems.
-      \item \texttt{/etc} \\ Konfiguration des Systems (nur globale! User-spezifische liegt in /home).
+      \item \texttt{/dev} \\ Auch Geräte sind unter Linux "Dateien", solche speziellen findet man hier, z.B. ist \texttt{/dev/sda} die erste Festplatte des Systems.
+      \item \texttt{/etc} \\ Konfiguration des Systems (nur globale! User-spezifische liegt in \texttt{/home}).
       \item \texttt{/home} \\  User-Daten: Dokumente, Bilder, Konfigurationen, alles, was von einem User generiert wurde.
       \item \texttt{/lib} \\ Wichtige Bibliotheken die für den Systemstart benötigt werden.
       \item \texttt{/media} \\ Externe Datenträger werden hier erscheinen.
       \item \texttt{/mnt} \\ Interne Datenträger gehören hier hin.
       \item \texttt{/proc} \\ Auch Prozesse sind Dateien, diese kann man hier manipulieren.
-      \item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von /home!
+      \item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von \texttt{/home}!
       \item \texttt{/sbin} \\ Weitere Programme die für den Systemstart nötig sind (und nur von root ausgeführt werden dürfen!).
       \item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern.
       \item \texttt{/tmp} \\ Temp, hier kann jeder Daten bis zum nächsten Neustart ablegen.
@@ -155,20 +155,20 @@
 
   \section{ Rechte}
     \subsection{Wer ist Wurzel?}
-      "root" wird der Administrator genannt. Er darf überall Dateien und Ordner anlegen, ändern, löschen, etc. Dabei ist es egal, wem die Dateien / Ordner gehören. Um ein Programm mit root-Rechten auszuführen schreibt man:
+      \glqq root \grqq ~wird der Administrator genannt. Er darf überall Dateien und Ordner anlegen, ändern, löschen, etc. Dabei ist es egal, wem die Dateien/Ordner gehören. Um ein Programm mit root-Rechten auszuführen schreibt man:
       \befehl{sudo <Programmname>}
-      Alternativ kannst Du durch
+      Alternativ kannst Du mit
       \befehl{sudo su}
       eine ganze Session als root starten.
-
+\pagebreak
     \subsection{Dateirechte ändern}
       root kann außerdem die Dateirechte von beliebigen Dateien ändern. Also ändern, wer eine bestimmte Datei lesen, schreiben oder ausführen darf.  
       \begin{itemize}
-	\item den Besitzer einer beliebigen Datei / eines Ordners ändern:
+	\item den Besitzer einer beliebigen Datei/eines Ordners ändern:
 	  \befehl{chown <benutzername>[:<gruppenname>] <dateiname>}
 	\item den Besitzer von allen Dateien in einem Ordner ändern:
 	  \befehl{chown -R <benutzername>[:<gruppenname>] <ordnername>}
-	\item Rechte für beliebige Dateien ändern (alle, dürfen diese Datei lesen):
+	\item Rechte für beliebige Dateien ändern (alle dürfen diese Datei lesen):
 	  \befehl{chmod a+r <dateiname>}
 	  Es gibt für diesen Befehl viele Parameter. Hier daher die wichtigsten:
 	  \begin{center}
@@ -202,15 +202,15 @@
       Unter Linux wird Software meistens in so genannten Paketen angeboten. Ein Paket enthällt neben der eigentlichen Software noch weitere Informationen (z.B. welche andere Software zur Benutzung benötigt wird) und integriert die Software bestmöglich in das System. Die meisten Anbieter (Distributionen) fassen Paketsammlungen als Repositories zusammen. Das sind (meistens) Webserver mit einem Index und ganz vielen Paketen, aus denen man das passende für sein System installieren kann.
 
     \subsection{Paketverwaltung}
-      Damit der Nutzer aber nicht selber nachgucken muss welches Paket welches andere braucht und wo genau man es herunterladen kann, gibt es eine Reihe von Tools zur Paketverwaltung.\\
+      Damit der Nutzer nicht selber nachgucken muss, welches Paket welches andere braucht und wo genau man es herunterladen kann, gibt es eine Reihe von Tools zur Paketverwaltung.\\
       Hier eine kleine Übersicht:
       \begin{itemize}
 	\item \texttt{dpkg} \\
-	  ist für das eigentliche Installieren (entpacken, kopieren der Dateien etc) eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meistens nicht benötigt, außer er möchte explizit ein Paket von Hand installieren und nicht aus dem Repository.
+	  Ist für das eigentliche Installieren (entpacken, kopieren der Dateien etc) eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meistens nicht benötigt, außer er möchte explizit ein Paket von Hand installieren und nicht aus dem Repository.
 	\item \texttt{apt} \\ 
-	  ist ein einfaches Tool zur Paketverwaltung, damit kann man Pakete suchen, installieren, deinstallieren, Paketlisten verwalten, etc.
+	  Ist ein einfaches Tool zur Paketverwaltung.Man kann damit Pakete suchen, installieren, deinstallieren, Paketlisten verwalten, etc.
 	\item \texttt{aptitude} \\ 
-	  ist ein fortschrittlicherer Paketverwalter der auf apt aufsetzt (arbeitet also nicht ohne). Dieser kann Paketabhängigkeiten besser auflösen und räumt beim deinstallieren von Paketen besser auf.
+	  Ist ein fortschrittlicherer Paketverwalter der auf apt aufsetzt (arbeitet also nicht ohne). \texttt{aptitude} kann Paketabhängigkeiten besser auflösen und räumt beim deinstallieren von Paketen besser auf als \texttt{apt}.
       \end{itemize}
 
     \subsection{Was man mit Paketen so alles anstellen kann}
@@ -218,23 +218,24 @@
       \begin{itemize}
 	\item Paket, das <Suchbegriff> in Name oder Beschreibung beinhaltet, suchen: 
 	  \befehl{apt-cache search <Suchbegriff>}
+        \pagebreak
 	\item Paket <Paketname> installieren:
 	  \befehl{sudo apt-get install <Paketname>}
 	\item Paket <Paketname> deinstallieren:
 	  \befehl{sudo apt-get remove <Paketname>}
 	\item Aktualisieren von Paketen \\
-	  Im Normalfall wird Dein Ubuntu Dir durch ein auffäliges Symbol irgendwo in der Taskleiste darauf hinweisen, dass es Aktualisierungen für bestimmte Pakete gibt. Willst Du diesen Vorgang von der Shell aus aufrufen benutzt Du die Befehle:
+	  Im Normalfall wird Dein Ubuntu Dich durch ein auffäliges Symbol irgendwo in der Taskleiste darauf hinweisen, dass es Aktualisierungen für bestimmte Pakete gibt. Willst Du diesen Vorgang von der Shell aus aufrufen, benutzt Du die Befehle:
 	  \befehl{sudo apt-get update}
 	  \befehl{sudo apt-get upgrade}
 	\item Müllbeseitigung \\
-	  Hin und wieder finden sich "Karteileichen" auf eurem System
+	  Hin und wieder finden sich \glqq Karteileichen\grqq ~auf eurem System
 	  \befehl{sudo apt-get autoremove}
 	  sollte diese beseitigen (gilt nur für \texttt{apt-get}, nicht für \texttt{aptitude}).
       \end{itemize}
 
-  \section{Software entwickeln}
+  \subsection{Software entwickeln}
     Im ersten und zweiten Semester wirst Du programmieren müssen. Viele von euch haben das vielleicht noch gar nicht oder nur innerhalb von grafischen Entwicklungsumgebungen, wie Eclipse oder NetBeans, gemacht. Wenn Du in der Shell deine Programme kompilieren und ausführen willst benötigst Du die folgenden Befehle. Beide Compiler unterstützen eine Vielzahl von weiteren Parametern, die Du jedoch zunächst nicht benötigen wirst.
-    \subsection{Java}
+    \subsubsection{Java}
       \begin{itemize}
 	\item kompilieren 
 	  \befehl{javac <Programmname.java>}
@@ -242,7 +243,7 @@
 	  \befehl{java <Programmname>}
       \end{itemize}
 
-    \subsection{C}
+    \subsubsection{C}
       \begin{itemize}
 	\item kompilieren
 	  \befehl{ gcc -o <Programmname> <Sourcefile.c>}
@@ -259,7 +260,7 @@
 
   \section{Editoren}
     Es gibt viele Konsoleneditoren. Diese sind jedoch nicht immer intuitiv benutzbar. An dieser Stelle möchten wir daher nur darauf hinweisen, dass es sie gibt. Beispiele für weit verbreitete Konsoleneditoren sind \textbf{nano} oder \textbf{vi/vim}.
-
+\pagebreak
   \section{Lustiges}
     Weil Du bis ganz zum Ende durchgehalten habt gibt es nun noch einen Tipp von uns, was Du bei Gelegenheit mal ausprobieren kannst.
     \begin{itemize} 

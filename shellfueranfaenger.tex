@@ -3,11 +3,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[english, ngerman]{babel}
 \usepackage{hyperref}
+\usepackage{listings}
+
+\lstset{language=bash}
 
 \newcommand{\befehl}[1]{
-  \begin{center}
-    \texttt{#1}
-  \end{center}
+\begin{lstlisting}
+#1
+\end{lstlisting}
 }
 
 
@@ -22,255 +25,410 @@
 
 \begin{document}
 
-  \maketitle
+\maketitle
 
-  \tableofcontents
-  \pagebreak
-  \parindent 0pt
-  \parskip 10pt
-  \section{Shell? Was ist eine Shell?}
-    "Die Unix-Shell oder kurz Shell (en. Hülle, Schale) bezeichnet die traditionelle Benutzerschnittstelle unter Unix oder unixoiden Computer-Betriebssystemen. Der Benutzer kann in einer Eingabezeile Kommandos eintippen, die der Computer dann sogleich ausführt. Man spricht darum auch von einem Kommandozeileninterpreter."\footnote{Wikipedia, http://de.wikipedia.org/wiki/Unix-Shell, 14.08.2011}
+\tableofcontents
+\pagebreak
+\parindent 0pt
+\parskip 10pt
+\section{Shell? Was ist eine Shell?}
+"Die Unix-Shell oder kurz Shell (en. Hülle, Schale) bezeichnet die 
+traditionelle Benutzerschnittstelle unter Unix oder unixoiden Computer-
+Betriebssystemen. Der Benutzer kann in einer Eingabezeile Kommandos 
+eintippen, die der Computer dann sogleich ausführt. Man spricht darum 
+auch von einem Kommandozeileninterpreter."
+\footnote{Wikipedia, http://de.wikipedia.org/wiki/Unix-Shell, 14.08.2011}
 
-    Eine Shell wird später der wichtigste Begleiter im Linux-Alltag sein, jetzt ist sie aber erst mal nur eine Kommandozeile in die man ein paar Befehle eintippen kann. Du wirst an einigen Stellen auch das Wort Terminal oder Konsole lesen. Meistens ist hier das selbe gemeint, wenn auch die Wörter unterschiedliches bedeuten: Terminal bzw. Konsole ist das Fenster das die Darstellung übernimmt, wohingegen die Shell die einzelne Eingabezeile ist.
+Eine Shell wird später der wichtigste Begleiter im Linux-Alltag sein, 
+jetzt ist sie aber erst mal nur eine Kommandozeile, in die man ein paar 
+Befehle eintippen kann. Du wirst an einigen Stellen auch das Wort 
+Terminal oder Konsole lesen. Meistens ist hier dasselbe gemeint, wenn 
+auch die Wörter unterschiedliches bedeuten: Terminal bzw. Konsole ist 
+das Fenster, das die Darstellung übernimmt, wohingegen die Shell die 
+einzelne Eingabezeile ist.
 
-    Später wirst du feststellen, dass man mit Hilfe der Shell sehr viele coole Sachen machen kann (insb. kleinere Aufgaben automatisieren) und die Arbeit mit dem Computer sehr vereinfachen. Bis dahin ist aber noch ein langer Weg und du findest hier erst mal eine kleine Übersicht für den Einstieg.
-    \subsection{Wie navigiert man?}
-      Das oberste Verzeichnis heißt "/", man erreicht es durch 
-      \befehl{cd /}
-      Ansonsten navigiert man:
-      \begin{itemize}
-	\item Ins Home-Verzeichnis 
-	  \befehl{cd}
-	\item Zurück ins letzte Verzeichnis, in dem man war 
-	  \befehl{cd -}
-	\item Ins Verzeichnis oberhalb vom aktuellen Verzeichnis 
-	  \befehl{cd ..} 
-	\item  Kurzform für das Home-Verzeichnis 
-	  \befehl{cd \textasciitilde/<unterverzeichnis>} 
-	  ist äquivalent zu 
-	  \befehl{cd /home/<benutzername>/<unterverzeichnis>}
-	\item Ins Verzeichnis <verzeichnisname>: 
-	  \befehl{cd <verzeichnisname>}
-	\item Ins Verzeichnis <verzeichnis>/<unterverzeichnis> 
-	  \befehl{cd <verzeichnis>/<unterverzeichnis>}
-      \end{itemize}
+Später wirst du feststellen, dass man mit Hilfe der Shell sehr viele 
+coole Sachen machen (insb. kleinere Aufgaben automatisieren) und die 
+Arbeit mit dem Computer sehr vereinfachen kann. Bis dahin ist aber noch 
+ein langer Weg und du findest hier erst mal eine kleine Übersicht für 
+den Einstieg.
 
-    \subsection{Inhalt eines Ordners anzeigen}
-      Damit man weiß, wohin man navigieren will, muss man den Inhalt eines Ordners kennen:  
-      \befehl{ls} 
-      Oder mit mehr Informationen: 
-      \befehl{ls -l} 
-      Auch versteckte Dateien (unter Linux sind das solche, die mit einem "." (Punkt) anfangen):
-      \befehl{ls -a} 
-      Beides kombiniert:
-      \befehl{ls -la} 
-      Auszug: 
-      \begin{verbatim}
+\subsection{Wie navigiert man?}
+Das oberste Verzeichnis heißt "/", man erreicht es durch 
+\begin{lstlisting}
+cd /
+\end{lstlisting}	
+Ansonsten navigiert man:
+\begin{itemize}
+\item ins Home-Verzeichnis
+\begin{lstlisting}
+cd
+\end{lstlisting}
+\item zurück ins letzte Verzeichnis, in dem man war 
+\begin{lstlisting}
+cd -
+\end{lstlisting}
+\item ins Verzeichnis oberhalb vom aktuellen Verzeichnis 
+\begin{lstlisting}
+cd ..
+\end{lstlisting}
+\item Kurzform für das Home-Verzeichnis 
+\begin{lstlisting}
+cd ~/<unterverzeichnis>
+\end{lstlisting} 
+ist äquivalent zu 
+\begin{lstlisting}
+cd /home/<benutzername>/<unterverzeichnis>
+\end{lstlisting}
+\item ins Verzeichnis <verzeichnisname>: 
+\begin{lstlisting}
+cd <verzeichnisname>
+\end{lstlisting}
+\item ins Verzeichnis <verzeichnis>/<unterverzeichnis> 
+\begin{lstlisting}
+cd <verzeichnis>/<unterverzeichnis>
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Inhalt eines Ordners anzeigen}
+Damit man weiß, wohin man navigieren will, muss man den Inhalt eines 
+Ordners kennen:  
+\begin{lstlisting}
+ls
+\end{lstlisting} 
+Oder mit mehr Informationen: 
+\begin{lstlisting}
+ls -l
+\end{lstlisting} 
+Auch versteckte Dateien (unter Linux sind das solche, die mit 
+einem "." (Punkt) anfangen):
+\begin{lstlisting}
+ls -a
+\end{lstlisting} 
+Beides kombiniert:
+\begin{lstlisting}
+ls -la
+\end{lstlisting} 
+Auszug: 
+\begin{verbatim}
 	$ ls -la
 	drwxr-xr-x  22 root root  4096  6. Jul 12:30 .
 	drwxr-xr-x  22 root root  4096  6. Jul 12:30 ..
 	drwxr-xr-x   2 root root  4096  6. Jul 12:25 bin
 	drwxr-xr-x   3 root root  4096  6. Jul 12:41 boot
-      \end{verbatim}
-      Erklärung: 
-      \begin{enumerate}
-	\item Die Rechte: \\
-	  d rwx rwx rwx
-	  \begin{itemize}
-	    \item d: es handelt sich um ein Verzeichnis (sonst "-" an erster Stelle)
-	    \item drei Gruppen mit \glqq rwx\grqq~ bzw. \glqq -\grqq ~an manchen stellen
-	      \begin{itemize}
-		\item \texttt{r} = Leseberechtigung
-		\item \texttt{w} = Schreibberechtigung
-		\item \texttt{x} = Ausführberechtigung
-		\item \texttt{\glqq -\grqq} = diese Berechtigung ist nicht gesetzt
-		\item Erste Gruppe (\glqq \texttt{rwx}\grqq ): gilt für den Besitzer der Datei
-		\item Zweite Gruppe: gilt für die Gruppe der Datei
-		\item Dritte Gruppe: gilt für alle anderen
-	      \end{itemize}
-	  \end{itemize}
-	\item Der Besitzer: \\
-	  \texttt{root root} ~bedeutet: Besitzer: "root", Gruppe: "root"
-	\item Danach die Größe (4096 Byte)
-	\item Veränderungsdatum
-	\item Name
-      \end{enumerate}
+\end{verbatim}
+Erklärung: 
+\begin{enumerate}
+\item Die Rechte: \\
+d rwx rwx rwx
+\begin{itemize}
+\item d: es handelt sich um ein Verzeichnis (sonst "-" an erster Stelle)
+\item drei Gruppen mit \glqq rwx\grqq~ bzw. \glqq -\grqq ~an manchen Stellen
+\begin{itemize}
+\item \texttt{r} = Leseberechtigung
+\item \texttt{w} = Schreibberechtigung
+\item \texttt{x} = Ausführberechtigung
+\item \texttt{\glqq -\grqq} = diese Berechtigung ist nicht gesetzt
+\item erste Gruppe (\glqq \texttt{rwx}\grqq ): gilt für den Besitzer der Datei
+\item zweite Gruppe: gilt für die Gruppe der Datei
+\item dritte Gruppe: gilt für alle anderen
+\end{itemize}
+\end{itemize}
+\item der Besitzer: \\
+\texttt{root root} ~bedeutet: Besitzer: "root", Gruppe: "root"
+\item danach die Größe (4096 Byte)
+\item Veränderungsdatum
+\item Name
+\end{enumerate}
 
-    \subsection{Wie erstellt man Ordner/Dateien?}
-      \begin{itemize}
-	\item Im aktüllen Ordner den Ordner <ordner> erstellen: 
-	  \befehl{mkdir <ordner>} 
-	\item Die komplette Ordnerstruktur /<ordner1>/<ordner2>/<ordner3> erstellen: 
-	  \befehl{mkdir -p /<ordner1>/<ordner2>/<ordner3>}
-	\item Eine (leere) Datei erstellen, wenn sie bereits vorhanden ist, das Änderungsdatum auf die aktuelle Zeit setzen: 
-	  \befehl{touch <dateiname>}
-      \end{itemize}
-    \subsection{Wie löscht man diese?}
-      \begin{itemize}
-	\item Eine Datei löschen: 
-	  \befehl{rm <dateiname>}
-	\item Mehrere Dateien löschen:
-	  \begin{itemize}
-	    \item Alle jpg-Dateien im aktuellen Ordner: 
-	      \befehl{rm *.jpg}
-	    \item Alle Dateien, die mit \glqq a\grqq anfangen: 
-	      \befehl{rm a*}
-	    \item Einen Ordner inklusive Unterordner und aller Dateien im Ordner: 
-	      \befehl{rm -r <ordnername>}
-	  \end{itemize}
-      \end{itemize}
-    \subsection{Wie verschiebt oder kopiert man diese?}
-      \begin{itemize} 
-	\item Kopieren einer Datei: 
-	  \befehl{cp <pfad>/<dateiname> <ziel>/<dateiname>}
-	\item Kopieren eines Ordners (mit komplettem Inhalt)
-	  \befehl{cp -r <pfad>/<ordnername> <ziel>/}
-	\item Verschieben einer Datei:
-	  \befehl{mv <pfad>/<Dateiname> <ziel>/<dateiname>}
-      \end{itemize}
+\subsection{Wie erstellt man Ordner/Dateien?}
+\begin{itemize}
+\item im aktuellen Ordner den Ordner <ordner> erstellen: 
+\begin{lstlisting}
+mkdir <ordner>
+\end{lstlisting} 
+\item die komplette Ordnerstruktur /<ordner1>/<ordner2>/<ordner3> erstellen: 
+\begin{lstlisting}
+mkdir -p /<ordner1>/<ordner2>/<ordner3>
+\end{lstlisting} 
+\item eine (leere) Datei erstellen, wenn sie bereits vorhanden ist, 
+das Änderungsdatum auf die aktuelle Zeit setzen: 
+\begin{lstlisting}
+touch <dateiname>
+\end{lstlisting} 
+\end{itemize}
+
+\subsection{Wie löscht man diese?}
+\begin{itemize}
+\item eine Datei löschen: 
+\begin{lstlisting}
+rm <dateiname>
+\end{lstlisting} 
+\item mehrere Dateien löschen:
+\begin{itemize}
+\item alle jpg-Dateien im aktuellen Ordner: 
+\begin{lstlisting}
+rm *.jpg
+\end{lstlisting} 
+\item alle Dateien, die mit \glqq a\grqq anfangen: 
+\begin{lstlisting}
+rm a*
+\end{lstlisting} 
+\item einen Ordner inklusive Unterordner und aller Dateien im Ordner: 
+\begin{lstlisting}
+rm -r <ordnername>
+\end{lstlisting} 
+\end{itemize}
+\end{itemize}
+
+\subsection{Wie verschiebt oder kopiert man diese?}
+\begin{itemize} 
+\item Kopieren einer Datei: 
+\begin{lstlisting}
+cp <pfad>/<dateiname> <ziel>/<dateiname>
+\end{lstlisting} 
+\item Kopieren eines Ordners (mit komplettem Inhalt)
+\begin{lstlisting}
+cp -r <pfad>/<dateiname> <ziel>/
+\end{lstlisting} 
+\item Verschieben einer Datei:
+\begin{lstlisting}
+mv <pfad>/<dateiname> <ziel>/<dateiname>
+\end{lstlisting} 
+\end{itemize}
 
 
-  \section{Spezielle Ordner und Partitionen}
-    Man sollte vorher wissen, dass unter Linux alles ein Ordner oder eine Datei ist. Es gibt kein Laufwerk C: und D:, alles ist eingehangen (gemountet) an einer sinnvollen stelle unter /. Man hat also eine klare Baumstruktur mit einer Wurzel.
-    \begin{itemize}
-      \item \texttt{/} \\ Das "root-Verzeichnis", der Anfang von allem so zu sagen, die Wurzel.
-      \item \texttt{/bin} \\ Wichtige Binaries (Programme) die für den Systemstart benötigt werden.
-      \item \texttt{/boot} \\ Kernel und Bootloaderconfig.
-      \item \texttt{/dev} \\ Auch Geräte sind unter Linux "Dateien", solche speziellen findet man hier, z.B. ist \texttt{/dev/sda} die erste Festplatte des Systems.
-      \item \texttt{/etc} \\ Konfiguration des Systems (nur globale! User-spezifische liegt in \texttt{/home}).
-      \item \texttt{/home} \\  User-Daten: Dokumente, Bilder, Konfigurationen, alles, was von einem User generiert wurde.
-      \item \texttt{/lib} \\ Wichtige Bibliotheken die für den Systemstart benötigt werden.
-      \item \texttt{/media} \\ Externe Datenträger werden hier erscheinen.
-      \item \texttt{/mnt} \\ Interne Datenträger gehören hier hin.
-      \item \texttt{/proc} \\ Auch Prozesse sind Dateien, diese kann man hier manipulieren.
-      \item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von \texttt{/home}!
-      \item \texttt{/sbin} \\ Weitere Programme die für den Systemstart nötig sind (und nur von root ausgeführt werden dürfen!).
-      \item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern.
-      \item \texttt{/tmp} \\ Temp, hier kann jeder Daten bis zum nächsten Neustart ablegen.
-      \item \texttt{/usr} \\ Programme, Bibliotheken und Dokumentation(!)
-      \item \texttt{/var} \\ Programmdaten (zB die Dateien von einem Datenbankserver)
-      \item \texttt{swap} \\Das Äquivalent zur Auslagerungsdatei unter Windows.
-    \end{itemize}
+\section{Spezielle Ordner und Partitionen}
+Man sollte vorher wissen, dass unter Linux alles ein eigener Ordner oder 
+eine eigene Datei ist. Es gibt kein Laufwerk C: und D:, alles ist 
+an einer sinnvollen Stelle unter / eingehängt (gemountet). Das heißt, 
+Dateisysteme werden dem Benutzer an bestimmten Stellen zugänglich gemacht.
+\footnote{Wikipedia, http://de.wikipedia.org/wiki/Mounten, 14.08.2011}
+Man hat also eine klare Baumstruktur mit einer Wurzel.
+\begin{itemize}
+\item \texttt{/} \\ Das "root-Verzeichnis", der Anfang von allem so zu sagen, die Wurzel.
+\item \texttt{/bin} \\ Wichtige Binaries (Programme) die für den Systemstart benötigt werden.
+\item \texttt{/boot} \\ Kernel und Bootloaderconfig.
+\item \texttt{/dev} \\ Auch Geräte sind unter Linux "Dateien", solche 
+speziellen findet man hier. Z.B. ist \texttt{/dev/sda} die erste Festplatte des Systems.
+\item \texttt{/etc} \\ Globale Konfiguration des Systems (benutzerspezifische liegt in \texttt{/home}).
+\item \texttt{/home} \\ Benutzerdaten: Dokumente, Bilder, Konfigurationen -- alles, was von einem Benutzer generiert wurde.
+\item \texttt{/lib} \\ Wichtige Bibliotheken, die für den Systemstart benötigt werden.
+\item \texttt{/media} \\ Externe Datenträger werden hier erscheinen.
+\item \texttt{/mnt} \\ Interne Datenträger gehören hier hin.
+\item \texttt{/proc} \\ Auch Prozesse sind Dateien. Diese kann man hier manipulieren.
+\item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von \texttt{/home}!
+\item \texttt{/sbin} \\ Weitere Programme, die für den Systemstart nötig sind (und nur vom Administrator (root) ausgeführt werden dürfen!).
+\item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern.
+\item \texttt{/tmp} \\ (temp) Hier kann jeder Daten ablegen, die beim nächsten Neustart automatisch gelöscht werden.
+\item \texttt{/usr} \\ Programme, Bibliotheken und Dokumentation(!)
+\item \texttt{/var} \\ Programmdaten (z.B. die Dateien von einem Datenbankserver)
+\item \texttt{swap} \\ Das Äquivalent zur Auslagerungsdatei unter Windows.
+\end{itemize}
 
 
-  \section{ Rechte}
-    \subsection{Wer ist Wurzel?}
-      \glqq root \grqq ~wird der Administrator genannt. Er darf überall Dateien und Ordner anlegen, ändern, löschen, etc. Dabei ist es egal, wem die Dateien/Ordner gehören. Um ein Programm mit root-Rechten auszuführen schreibt man:
-      \befehl{sudo <Programmname>}
-      Alternativ kannst Du mit
-      \befehl{sudo su}
-      eine ganze Session als root starten.
+\section{ Rechte}
+\subsection{Wer ist Wurzel?}
+\glqq root \grqq ~wird der Administrator genannt. Er darf überall Dateien 
+und Ordner anlegen, ändern, löschen, etc. Dabei ist es egal, wem die 
+Dateien/Ordner gehören. Um ein Programm mit root-Rechten auszuführen, 
+schreibt man:
+\begin{lstlisting}
+sudo <programmname>
+\end{lstlisting} 
+Alternativ kannst Du mit
+\begin{lstlisting}
+sudo su
+\end{lstlisting} 
+eine ganze Session als root starten.
+
+sudo ist ein Programm, welches in vielen Linux-Distributionen standardmäßig
+enthalten ist. Ansonsten kann man es nachträglich installieren (siehe unten).
 \pagebreak
-    \subsection{Dateirechte ändern}
-      root kann außerdem die Dateirechte von beliebigen Dateien ändern. Also ändern, wer eine bestimmte Datei lesen, schreiben oder ausführen darf.  
-      \begin{itemize}
-	\item den Besitzer einer beliebigen Datei/eines Ordners ändern:
-	  \befehl{chown <benutzername>[:<gruppenname>] <dateiname>}
-	\item den Besitzer von allen Dateien in einem Ordner ändern:
-	  \befehl{chown -R <benutzername>[:<gruppenname>] <ordnername>}
-	\item Rechte für beliebige Dateien ändern (alle dürfen diese Datei lesen):
-	  \befehl{chmod a+r <dateiname>}
-	  Es gibt für diesen Befehl viele Parameter. Hier daher die wichtigsten:
-	  \begin{center}
-	    \begin{tabular}{ll}
-	      \texttt{a} & alle \\
-	      \texttt{g} & Gruppe \\
-	      \texttt{u} & Besitzer \\
-	      \texttt{+} & Recht gewähren \\
-	      \texttt{-} & Recht entziehen \\
-	      \texttt{r} & Leseberechtigung \\
-	      \texttt{w} & Schreibberechtigung \\
-	      \texttt{x} & Ausführungsberechtigung \\
-	    \end{tabular}
-	  \end{center} 
-	  Zusammengefasst:
-	  \befehl{chmod \{a,g,u\}\{+,-\}\{r,w,x\} <dateiname>}
-      \end{itemize}   
+\subsection{Dateirechte ändern}
+root kann außerdem die Dateirechte von beliebigen Dateien ändern. Also ändern, 
+wer eine bestimmte Datei lesen, schreiben oder ausführen darf.  
+\begin{itemize}
+\item den Besitzer einer beliebigen Datei/eines Ordners ändern:
+\begin{lstlisting}
+chown <benutzername>[:<gruppenname>] <dateiname>
+\end{lstlisting} 
+\item den Besitzer von allen Dateien in einem Ordner ändern:
+\begin{lstlisting}
+chown -R <benutzername>[:<gruppenname>] <ordnername>
+\end{lstlisting} 
+\item Rechte für beliebige Dateien ändern (alle dürfen diese Datei lesen):
+\begin{lstlisting}
+chmod a+r <dateiname>
+\end{lstlisting} 
+Es gibt für diesen Befehl viele Parameter. Hier daher die wichtigsten:
+\begin{center}
+\begin{tabular}{ll}
+\texttt{a} & alle \\
+\texttt{g} & Gruppe \\
+\texttt{u} & Besitzer \\
+\texttt{+} & Recht gewähren \\
+\texttt{-} & Recht entziehen \\
+\texttt{r} & Leseberechtigung \\
+\texttt{w} & Schreibberechtigung \\
+\texttt{x} & Ausführungsberechtigung \\
+\end{tabular}
+\end{center} 
+Zusammengefasst:
+\begin{lstlisting}
+chmod {a,g,u}{+,-}{r,w,x} <dateiname>
+\end{lstlisting} 
 
-    \subsection{Was darf ein User normalerweise (nicht)?}
-      Ein normaler Benutzer darf 
-      \begin{itemize}
-	\item in Ordnern, die ihm gehören, Dateien und Ordner erstellen,
-	\item eigene Ordner/Dateien ändern oder löschen (bei Ordnern nur, wenn keine fremden Dateien darin sind),
-	\item fremde Dateien nur dann ändern, wenn die Berechtigungen entsprechend gesetzt sind,
-	\item Rechte eigener Dateien setzen,
-	\item Besitzer eigener Dateien verändern.
-      \end{itemize}
+\end{itemize}   
 
-  \section{Software}
-    \subsection{Pakete}
-      Unter Linux wird Software meistens in so genannten Paketen angeboten. Ein Paket enthällt neben der eigentlichen Software noch weitere Informationen (z.B. welche andere Software zur Benutzung benötigt wird) und integriert die Software bestmöglich in das System. Die meisten Anbieter (Distributionen) fassen Paketsammlungen als Repositories zusammen. Das sind (meistens) Webserver mit einem Index und ganz vielen Paketen, aus denen man das passende für sein System installieren kann.
+\subsection{Was darf ein Benutzer normalerweise (nicht)?}
+Ein normaler Benutzer darf 
+\begin{itemize}
+\item in Ordnern, die ihm gehören, Dateien und Ordner erstellen,
+\item eigene Ordner/Dateien ändern oder löschen (bei Ordnern nur, wenn 
+keine fremden Dateien darin enthalten sind),
+\item fremde Dateien nur dann ändern, wenn die Berechtigungen entsprechend gesetzt sind,
+\item Rechte eigener Dateien setzen,
+\item Besitzer eigener Dateien verändern.
+\end{itemize}
 
-    \subsection{Paketverwaltung}
-      Damit der Nutzer nicht selber nachgucken muss, welches Paket welches andere braucht und wo genau man es herunterladen kann, gibt es eine Reihe von Tools zur Paketverwaltung.\\
-      Hier eine kleine Übersicht:
-      \begin{itemize}
-	\item \texttt{dpkg} \\
-	  Ist für das eigentliche Installieren (entpacken, kopieren der Dateien etc) eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meistens nicht benötigt, außer er möchte explizit ein Paket von Hand installieren und nicht aus dem Repository.
-	\item \texttt{apt} \\ 
-	  Ist ein einfaches Tool zur Paketverwaltung.Man kann damit Pakete suchen, installieren, deinstallieren, Paketlisten verwalten, etc.
-	\item \texttt{aptitude} \\ 
-	  Ist ein fortschrittlicherer Paketverwalter der auf apt aufsetzt (arbeitet also nicht ohne). \texttt{aptitude} kann Paketabhängigkeiten besser auflösen und räumt beim deinstallieren von Paketen besser auf als \texttt{apt}.
-      \end{itemize}
+\section{Software}
+\subsection{Pakete}
+Unter Linux wird Software meistens in so genannten Paketen angeboten. 
+Ein Paket enthällt neben der eigentlichen Software noch weitere 
+Informationen (z.B. welche andere Software zur Benutzung benötigt wird) 
+und integriert die Software bestmöglich in das System. Die meisten 
+Anbieter (Distributionen) fassen Paketsammlungen als Repositories zusammen. 
+Das sind (meistens) Webserver mit einem Index und ganz vielen Paketen, 
+aus denen man das passende für sein System installieren kann.
 
-    \subsection{Was man mit Paketen so alles anstellen kann}
-      In der Konsole kannst Du Pakete mit apt-get oder aptitude (de)installieren und einiges mehr. Zum Installieren von Software benötigst Du Rootrechte. Bei den hier vorgestellten Befehlen kannst Du, je nach persönlicher Vorliebe,  \texttt{apt-get} bzw. \texttt{apt-cache} durch \texttt{aptitude} ersetzen.
-      \begin{itemize}
-	\item Paket, das <Suchbegriff> in Name oder Beschreibung beinhaltet, suchen: 
-	  \befehl{apt-cache search <Suchbegriff>}
-        \pagebreak
-	\item Paket <Paketname> installieren:
-	  \befehl{sudo apt-get install <Paketname>}
-	\item Paket <Paketname> deinstallieren:
-	  \befehl{sudo apt-get remove <Paketname>}
-	\item Aktualisieren von Paketen \\
-	  Im Normalfall wird Dein Ubuntu Dich durch ein auffäliges Symbol irgendwo in der Taskleiste darauf hinweisen, dass es Aktualisierungen für bestimmte Pakete gibt. Willst Du diesen Vorgang von der Shell aus aufrufen, benutzt Du die Befehle:
-	  \befehl{sudo apt-get update}
-	  \befehl{sudo apt-get upgrade}
-	\item Müllbeseitigung \\
-	  Hin und wieder finden sich \glqq Karteileichen\grqq ~auf eurem System
-	  \befehl{sudo apt-get autoremove}
-	  sollte diese beseitigen (gilt nur für \texttt{apt-get}, nicht für \texttt{aptitude}).
-      \end{itemize}
+\subsection{Paketverwaltung}
+Damit der Nutzer nicht selber nachgucken muss, welches Paket welches 
+andere braucht und wo genau man es herunterladen kann, gibt es eine 
+Reihe von Tools zur Paketverwaltung.\\
+Hier eine kleine Übersicht:
+\begin{itemize}
+\item \texttt{dpkg} \\
+Ist für das eigentliche Installieren (Entpacken, Kopieren der Dateien etc.) 
+eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meistens 
+nicht benötigt, außer er möchte explizit ein Paket von Hand installieren 
+und nicht aus dem Repository.
+\item \texttt{apt} \\ 
+Ist ein einfaches Tool zur Paketverwaltung. Man kann damit Pakete suchen, 
+installieren, deinstallieren, Paketlisten verwalten, etc.
+\item \texttt{aptitude} \\ 
+Ist ein fortschrittlicherer Paketverwalter der auf apt aufsetzt (arbeitet 
+also nicht ohne apt). \texttt{aptitude} kann Paketabhängigkeiten besser 
+auflösen und räumt beim Deinstallieren von Paketen besser auf als \texttt{apt}.
+\end{itemize}
 
-  \subsection{Software entwickeln}
-    Im ersten und zweiten Semester wirst Du programmieren müssen. Viele von euch haben das vielleicht noch gar nicht oder nur innerhalb von grafischen Entwicklungsumgebungen, wie Eclipse oder NetBeans, gemacht. Wenn Du in der Shell deine Programme kompilieren und ausführen willst benötigst Du die folgenden Befehle. Beide Compiler unterstützen eine Vielzahl von weiteren Parametern, die Du jedoch zunächst nicht benötigen wirst.
-    \subsubsection{Java}
-      \begin{itemize}
-	\item kompilieren 
-	  \befehl{javac <Programmname.java>}
-	\item ausführen
-	  \befehl{java <Programmname>}
-      \end{itemize}
+\subsection{Was man mit Paketen so alles anstellen kann}
+ In der Konsole kannst du Pakete mit apt-get oder aptitude (de)installieren 
+und einiges mehr. Zum Installieren von Software benötigst du Rootrechte. 
+Bei den hier vorgestellten Befehlen kannst du, je nach persönlicher Vorliebe,  
+\texttt{apt-get} oder \texttt{apt-cache} durch \texttt{aptitude} ersetzen.
+\begin{itemize}
+\item Paket, das <Suchbegriff> in Name oder Beschreibung beinhaltet, suchen: 
+\begin{lstlisting}
+apt-cache search <Suchbegriff>
+\end{lstlisting} 
+\item Paket <Paketname> installieren:
+\begin{lstlisting}
+sudo apt-get install <Paketname>
+\end{lstlisting} 
+\item Paket <Paketname> deinstallieren:
+\begin{lstlisting}
+sudo apt-get remove <Paketname>
+\end{lstlisting} 
+\item Aktualisieren von Paketen \\
+Im Normalfall wird dein Ubuntu dich durch ein auffäliges Symbol irgendwo 
+in der Taskleiste darauf hinweisen, dass es Aktualisierungen für bestimmte 
+Pakete gibt. Willst du diesen Vorgang von der Shell aus aufrufen, benutzt 
+du die Befehle:
+\begin{lstlisting}
+sudo apt-get update
+sudo apt-get upgrade
+\end{lstlisting} 
+\item Müllbeseitigung \\
+Hin und wieder finden sich \glqq Karteileichen\grqq ~auf eurem System
+\begin{lstlisting}
+sudo apt-get autoremove
+\end{lstlisting} 
+sollte diese beseitigen (gilt nur für \texttt{apt-get}, nicht für \texttt{aptitude}).
+\end{itemize}
 
-    \subsubsection{C}
-      \begin{itemize}
-	\item kompilieren
-	  \befehl{ gcc -o <Programmname> <Sourcefile.c>}
-	\item ausführen
-	  \befehl{ ./<Programmname>}
-      \end{itemize}
+\subsection{Software entwickeln}
+Im ersten und zweiten Semester wirst du programmieren müssen. Viele von 
+euch haben das vielleicht noch gar nicht oder nur innerhalb von grafischen
+Entwicklungsumgebungen, wie Eclipse oder NetBeans, gemacht. Wenn du in 
+der Shell deine Programme kompilieren und ausführen willst, benötigst du 
+die folgenden Befehle. Beide Compiler unterstützen eine Vielzahl von
+weiteren Parametern, die du jedoch zunächst nicht benötigen wirst.
 
-  \section{manpages}
-    Du wirst feststellen, dass wir euch bei weitem nicht alle Befehle und Parameter hier aufzeigen, die es so gibt, zum Beispiel haben wir hier nichts zum Thema Netzwerke einrichten gesagt. Wann immer Du nicht weißt, wie Du einen Befehl benutzen solltest, oder was er vielleicht noch alles kann lohnt es sich die manpage zu diesem Befehl zu lesen. Die manpage eines Programms rufst Du mit 
-    \befehl{man <Programmname>}
-    auf. Um Dir das genauer anzuschauen ruf doch einfach mal 
-    \befehl{man man}
-    auf.
+\subsubsection{Java}
+\begin{itemize}
+\item kompilieren 
+\begin{lstlisting}
+javac <Programmname.java>
+\end{lstlisting} 
+\item ausführen
+\begin{lstlisting}
+java <Programmname>
+\end{lstlisting} 
+\end{itemize}
 
-  \section{Editoren}
-    Es gibt viele Konsoleneditoren. Diese sind jedoch nicht immer intuitiv benutzbar. An dieser Stelle möchten wir daher nur darauf hinweisen, dass es sie gibt. Beispiele für weit verbreitete Konsoleneditoren sind \textbf{nano} oder \textbf{vi/vim}.
+\subsubsection{C}
+\begin{itemize}
+\item kompilieren
+\begin{lstlisting}
+gcc -o <Programmname> <Dateiname.c>
+\end{lstlisting} 
+\item ausführen
+\begin{lstlisting}
+./<Programmname>
+\end{lstlisting} 
+\end{itemize}
+
+\section{manpages}
+Du wirst feststellen, dass wir euch bei weitem nicht alle Befehle und 
+Parameter hier aufzeigen, die es so gibt. Zum Beispiel haben wir hier 
+nichts zum Thema "Netzwerke einrichten" gesagt. Wann immer du nicht 
+weißt, wie du einen Befehl benutzen solltest, oder was er vielleicht 
+noch alles kann, lohnt es sich, die manpage (Gebrauchsanleitung, engl. 
+manual) zu diesem Befehl zu lesen. Die manpage eines Programms rufst du 
+mit 
+\begin{lstlisting}
+man <Programmname>
+\end{lstlisting} 
+ auf. Um dir das genauer anzuschauen, ruf doch einfach mal 
+\begin{lstlisting}
+man man
+\end{lstlisting} 
+auf.
+
+\section{Editoren}
+Es gibt viele Konsoleneditoren. Diese sind jedoch nicht immer intuitiv 
+benutzbar. An dieser Stelle möchten wir daher nur darauf hinweisen, dass 
+es sie gibt. Beispiele für weit verbreitete Konsoleneditoren sind 
+\textbf{nano} oder \textbf{vi/vim}.
+
+Darüber hinaus gibt es -- wie unter Windows -- auch grafische Editoren, 
+die sich ohne größere Vorkenntnisse bedienen lassen. Je nach Distribution
+sind unterschiedliche Editoren bereits vorinstalliert. Beispiele sind
+\textbf{kate}, \textbf{gedit}, \textbf{kedit}, \textbf{kwrite}, \textbf{geany}, ...
+
 \pagebreak
-  \section{Lustiges}
-    Weil Du bis ganz zum Ende durchgehalten habt gibt es nun noch einen Tipp von uns, was Du bei Gelegenheit mal ausprobieren kannst.
-    \begin{itemize} 
-      \item \texttt{cowsay}
-      \item \texttt{sl}
-      \item \texttt{apt-get moo}
-      \item \texttt{aptitude moo}
-    \end{itemize}
-    
+\section{Lustiges}
+Weil du bis ganz zum Ende durchgehalten hast, gibt es nun noch einen 
+Tipp von uns, was du bei Gelegenheit mal ausprobieren kannst.
+\begin{itemize} 
+\item \texttt{cowsay}
+\item \texttt{sl}
+\item \texttt{apt-get moo}
+\item \texttt{aptitude moo}
+\end{itemize}
 
-    \bigskip
-    \center{\huge{Wir wünschen Dir nun viel Spaß beim ausprobieren.}}
+\bigskip
+\center{\huge{Wir wünschen dir nun viel Spaß beim ausprobieren.}}
+
 \end{document}

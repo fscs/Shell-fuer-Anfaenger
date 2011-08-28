@@ -42,8 +42,8 @@ auch von einem Kommandozeileninterpreter."
 Eine Shell wird später der wichtigste Begleiter im Linux-Alltag sein, 
 jetzt ist sie aber erst mal nur eine Kommandozeile, in die man ein paar 
 Befehle eintippen kann. Du wirst an einigen Stellen auch das Wort 
-Terminal oder Konsole lesen. Meistens ist hier dasselbe gemeint, wenn 
-auch die Wörter unterschiedliches bedeuten: Terminal bzw. Konsole ist 
+Terminal oder Konsole lesen. Meist ist hier dasselbe gemeint, wenn 
+auch die Wörter Unterschiedliches bedeuten: Terminal bzw. Konsole ist 
 das Fenster, das die Darstellung übernimmt, wohingegen die Shell die 
 einzelne Eingabezeile ist.
 
@@ -222,7 +222,7 @@ speziellen findet man hier. Z.B. ist \texttt{/dev/sda} die erste Festplatte des 
 \item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern.
 \item \texttt{/tmp} \\ (temp) Hier kann jeder Daten ablegen, die beim nächsten Neustart automatisch gelöscht werden.
 \item \texttt{/usr} \\ Programme, Bibliotheken und Dokumentation(!)
-\item \texttt{/var} \\ Programmdaten (z.B. die Dateien von einem Datenbankserver)
+\item \texttt{/var} \\ Programmdaten (z.B. die Dateien eines Datenbankservers)
 \item \texttt{swap} \\ Das Äquivalent zur Auslagerungsdatei unter Windows.
 \end{itemize}
 
@@ -284,12 +284,12 @@ chmod {a,g,u}{+,-}{r,w,x} <dateiname>
 \subsection{Was darf ein Benutzer normalerweise (nicht)?}
 Ein normaler Benutzer darf 
 \begin{itemize}
-\item in Ordnern, die ihm gehören, Dateien und Ordner erstellen,
+\item in Ordnern, die ihm gehören, Dateien und Ordner erstellen
 \item eigene Ordner/Dateien ändern oder löschen (bei Ordnern nur, wenn 
-keine fremden Dateien darin enthalten sind),
-\item fremde Dateien nur dann ändern, wenn die Berechtigungen entsprechend gesetzt sind,
-\item Rechte eigener Dateien setzen,
-\item Besitzer eigener Dateien verändern.
+keine fremden Dateien darin enthalten sind)
+\item fremde Dateien nur dann ändern, wenn die Berechtigungen entsprechend gesetzt sind
+\item Rechte eigener Dateien setzen
+\item Besitzer eigener Dateien verändern
 \end{itemize}
 
 \section{Software}
@@ -299,18 +299,20 @@ Ein Paket enthällt neben der eigentlichen Software noch weitere
 Informationen (z.B. welche andere Software zur Benutzung benötigt wird) 
 und integriert die Software bestmöglich in das System. Die meisten 
 Anbieter (Distributionen) fassen Paketsammlungen als Repositories zusammen. 
-Das sind (meistens) Webserver mit einem Index und ganz vielen Paketen, 
-aus denen man das passende für sein System installieren kann.
+Das sind (meistens) Webserver mit vielen Paketen und einem Index dieser, 
+mit dessen Hilfe man dann das passende (oder gewünschte) für sein System
+installieren kann.
 
 \subsection{Paketverwaltung}
 Damit der Nutzer nicht selber nachgucken muss, welches Paket welches 
 andere braucht und wo genau man es herunterladen kann, gibt es eine 
 Reihe von Tools zur Paketverwaltung.\\
-Hier eine kleine Übersicht:
+Hier eine kleine Übersicht (für Debian, Ubuntu und darauf basierende
+Distributionen):
 \begin{itemize}
 \item \texttt{dpkg} \\
 Ist für das eigentliche Installieren (Entpacken, Kopieren der Dateien etc.) 
-eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meistens 
+eines einzelnen Pakets. \texttt{dpkg} wird vom normalen Nutzer meist 
 nicht benötigt, außer er möchte explizit ein Paket von Hand installieren 
 und nicht aus dem Repository.
 \item \texttt{apt} \\ 
@@ -393,7 +395,7 @@ gcc -o <Programmname> <Dateiname.c>
 Du wirst feststellen, dass wir euch bei weitem nicht alle Befehle und 
 Parameter hier aufzeigen, die es so gibt. Zum Beispiel haben wir hier 
 nichts zum Thema "Netzwerke einrichten" gesagt. Wann immer du nicht 
-weißt, wie du einen Befehl benutzen solltest, oder was er vielleicht 
+weißt, wie du einen Befehl benutzen solltest oder was er vielleicht 
 noch alles kann, lohnt es sich, die manpage (Gebrauchsanleitung, engl. 
 manual) zu diesem Befehl zu lesen. Die manpage eines Programms rufst du 
 mit 
@@ -429,6 +431,6 @@ Tipp von uns, was du bei Gelegenheit mal ausprobieren kannst.
 \end{itemize}
 
 \bigskip
-\center{\huge{Wir wünschen dir nun viel Spaß beim ausprobieren.}}
+\center{\huge{Wir wünschen dir nun viel Spaß beim Ausprobieren.}}
 
 \end{document}

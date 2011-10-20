@@ -278,7 +278,13 @@ Es gibt für diesen Befehl viele Parameter. Hier daher die wichtigsten:
 Zusammengefasst:
 \begin{lstlisting}
 chmod {a,g,u}{+,-}{r,w,x} <dateiname>
-\end{lstlisting} 
+\end{lstlisting}
+oder auch mehrere Operationen auf einmal, z.B.
+\begin{lstlisting}
+chmod a-w,u+wx <dateiname>
+\end{lstlisting}
+um in einem Befehl allen die Schreibberechtigung zu entziehen (a-w) und dem
+Besitzer Schreib- und Ausführrechte zu geben (u+wx).
 
 \end{itemize}   
 

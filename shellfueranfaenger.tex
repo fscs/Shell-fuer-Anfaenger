@@ -18,8 +18,8 @@
 %opening
 \title{Shell für Anfänger\\
 \large{Kurzüberblick über die häufigsten Befehle}}
-\author{Jens Dietze, Evgeni Golov, Janine Haas}
-\date{13.08.2011}
+\author{Jens Dietze, Evgeni Golov, Janine Haas, Markus Brenneis}
+\date{02.08.2019}
 
 
 
@@ -32,36 +32,32 @@
 \parindent 0pt
 \parskip 10pt
 \section{Shell? Was ist eine Shell?}
-"Die Unix-Shell oder kurz Shell (en. Hülle, Schale) bezeichnet die 
-traditionelle Benutzerschnittstelle unter Unix oder unixoiden Computer-
-Betriebssystemen. Der Benutzer kann in einer Eingabezeile Kommandos 
-eintippen, die der Computer dann sogleich ausführt. Man spricht darum 
-auch von einem Kommandozeileninterpreter."
-\footnote{Wikipedia, http://de.wikipedia.org/wiki/Unix-Shell, 14.08.2011}
+„Die Unix-Shell oder kurz Shell (englisch für Hülle, Schale) bezeichnet die traditionelle Benutzerschnittstelle unter Unix oder unixoiden Computer-Betriebssystemen. Der Benutzer kann in einer Eingabezeile Kommandos eintippen, die der Computer dann sogleich ausführt. Man spricht darum auch von einem Kommandozeileninterpreter.“
+\footnote{Wikipedia, https://de.wikipedia.org/wiki/Unix-Shell, CC-by-sa-3.0, abgerufen am 02.08.2019}
 
-Eine Shell wird später der wichtigste Begleiter im Linux-Alltag sein, 
+Eine Shell wird später der wichtigste Begleiter im Linux\footnote{oder auch macOS -- Das meiste, was in diesem Dokument beschrieben ist, trifft auf alle Unix-ähnlichen Systeme zu; dazu zählen insbesondere Linux (auch Android) und macOS.}-Alltag sein, 
 jetzt ist sie aber erst mal nur eine Kommandozeile, in die man ein paar 
 Befehle eintippen kann. Du wirst an einigen Stellen auch das Wort 
-Terminal oder Konsole lesen. Meist ist hier dasselbe gemeint, wenn 
+\emph{Terminal} oder \emph{Konsole} lesen. Meist ist hier dasselbe gemeint, wenn 
 auch die Wörter Unterschiedliches bedeuten: Terminal bzw. Konsole ist 
-das Fenster, das die Darstellung übernimmt, wohingegen die Shell die 
-einzelne Eingabezeile ist.
+das Fenster, das die Darstellung übernimmt, wohingegen die Shell das Programm ist, dass die einzelnen Befehle in der Eingabezeile entgegennimmt.
 
-Später wirst du feststellen, dass man mit Hilfe der Shell sehr viele 
+Später wirst du feststellen, dass man mithilfe der Shell sehr viele 
 coole Sachen machen (insb. kleinere Aufgaben automatisieren) und die 
 Arbeit mit dem Computer sehr vereinfachen kann. Bis dahin ist aber noch 
 ein langer Weg und du findest hier erst mal eine kleine Übersicht für 
 den Einstieg.
 
-Eine Sache möchten wir Dir schon sagen bevor Du anfängst: Wenn die Shell keine Fehlermeldung ausgibt ist alles gut gelaufen. Eine Bestätigung gibt es im Allgemeinen nicht.
+Eine Sache möchten wir Dir schon sagen, bevor Du anfängst: Wenn die Shell keine Fehlermeldung ausgibt, ist alles gut gelaufen. Eine Bestätigung gibt es im Allgemeinen nicht.
+
 \subsection{Wie navigiert man?}
-Das oberste Verzeichnis heißt "/", man erreicht es durch 
+Das oberste Verzeichnis heißt \texttt{/}, man erreicht es durch 
 \begin{lstlisting}
 cd /
 \end{lstlisting}	
 Ansonsten navigiert man:
 \begin{itemize}
-\item ins Home-Verzeichnis
+\item ins Benutzer-Verzeichnis („Home-Verzeichnis“)
 \begin{lstlisting}
 cd
 \end{lstlisting}
@@ -91,6 +87,11 @@ cd <verzeichnis>/<unterverzeichnis>
 \end{lstlisting}
 \end{itemize}
 
+Tipp: Mit der Tabulatortaste\footnote{Auf deutschen Tastaturen links neben dem Q} kann man sich Befehlsnamen, Parameter und Dateinamen vervollständigen lassen. Wenn es keine eindeutige Vervollständigung gibt, zeigt zweimaliges Drücken der Tabulatortaste alle Möglichkeiten an.
+
+Die meisten Shells zeigen am Anfang der Eingabezeile an, in welchem Verzeichnis man sich aktuell befindet.
+Falls dies nicht der Fall ist, kann man sich mit dem Befehl \texttt{pwd} den Pfad des aktuellen Verzeichnisses anzeigen lassen.
+
 \subsection{Inhalt eines Ordners anzeigen}
 Damit man weiß, wohin man navigieren will, muss man den Inhalt eines 
 Ordners kennen:  
@@ -101,8 +102,8 @@ Oder mit mehr Informationen:
 \begin{lstlisting}
 ls -l
 \end{lstlisting} 
-Auch versteckte Dateien (unter Linux sind das solche, die mit 
-einem "." (Punkt) anfangen):
+Auch versteckte Dateien (unter Linux\footnote{und auch macOS} sind das solche, die mit 
+einem \texttt{.} (Punkt) anfangen):
 \begin{lstlisting}
 ls -a
 \end{lstlisting} 
@@ -121,22 +122,22 @@ Auszug:
 Erklärung: 
 \begin{enumerate}
 \item Die Rechte: \\
-d rwx rwx rwx
+\texttt{d rwx rwx rwx}
 \begin{itemize}
-\item d: es handelt sich um ein Verzeichnis (sonst \glqq -\grqq ~an erster Stelle)
+\item \texttt{d}: es handelt sich um ein Verzeichnis (sonst \glqq -\grqq ~an erster Stelle)
 \item drei Gruppen mit \glqq rwx\grqq~ bzw. \glqq -\grqq ~an manchen Stellen
 \begin{itemize}
 \item \texttt{r} = Leseberechtigung
 \item \texttt{w} = Schreibberechtigung
 \item \texttt{x} = Ausführberechtigung
-\item \texttt{\glqq -\grqq} = diese Berechtigung ist nicht gesetzt
+\item \texttt{-} = diese Berechtigung ist nicht gesetzt
 \item erste Gruppe (\glqq \texttt{rwx}\grqq ): gilt für den Besitzer der Datei
 \item zweite Gruppe: gilt für die Gruppe der Datei
 \item dritte Gruppe: gilt für alle anderen
 \end{itemize}
 \end{itemize}
 \item der Besitzer: \\
-\texttt{root root} ~bedeutet: Besitzer: "root", Gruppe: "root"
+\texttt{root root} ~bedeutet: Besitzer: root, Gruppe: root
 \item danach die Größe (4096 Byte)
 \item Veränderungsdatum
 \item Name
@@ -160,6 +161,9 @@ touch <dateiname>
 \end{itemize}
 
 \subsection{Wie löscht man diese?}
+
+Achtung: „Löschen“ heißt hier wirklich „löschen“ und nicht „in den Papierkorb verschieben“\footnote{Dafür gibt es einen anderen Befehl: \texttt{trash}}. Es erfolgt standardmäßig keine Sicherheitsabfrage bei \texttt{rm}.
+
 \begin{itemize}
 \item eine Datei löschen: 
 \begin{lstlisting}
@@ -171,7 +175,7 @@ rm <dateiname>
 \begin{lstlisting}
 rm *.jpg
 \end{lstlisting} 
-\item alle Dateien, die mit \glqq a\grqq anfangen: 
+\item alle Dateien, die mit „a“ anfangen: 
 \begin{lstlisting}
 rm a*
 \end{lstlisting} 
@@ -202,35 +206,34 @@ mv <pfad>/<dateiname> <ziel>/<dateiname>
 \section{Spezielle Ordner und Partitionen}
 Man sollte vorher wissen, dass unter Linux alles ein eigener Ordner oder 
 eine eigene Datei ist. Es gibt kein Laufwerk C: und D:, alles ist 
-an einer sinnvollen Stelle unter / eingehängt (gemountet). Das heißt, 
-Dateisysteme werden dem Benutzer an bestimmten Stellen zugänglich gemacht.
-\footnote{Wikipedia, http://de.wikipedia.org/wiki/Mounten, 14.08.2011}
+an einer sinnvollen Stelle unter / eingehängt („gemountet“). Das heißt, 
+Dateisysteme werden dem Benutzer an bestimmten Stellen zugänglich gemacht.\footnote{Wikipedia, http://de.wikipedia.org/wiki/Mounten, 14.08.2011}
 Man hat also eine klare Baumstruktur mit einer Wurzel.
 \begin{itemize}
-\item \texttt{/} \\ Das "root-Verzeichnis", der Anfang von allem so zu sagen, die Wurzel.
-\item \texttt{/bin} \\ Wichtige Binaries (Programme) die für den Systemstart benötigt werden.
-\item \texttt{/boot} \\ Kernel und Bootloaderconfig.
-\item \texttt{/dev} \\ Auch Geräte sind unter Linux "Dateien", solche 
-speziellen findet man hier. Z.B. ist \texttt{/dev/sda} die erste Festplatte des Systems.
-\item \texttt{/etc} \\ Globale Konfiguration des Systems (benutzerspezifische liegt in \texttt{/home}).
-\item \texttt{/home} \\ Benutzerdaten: Dokumente, Bilder, Konfigurationen -- alles, was von einem Benutzer generiert wurde.
-\item \texttt{/lib} \\ Wichtige Bibliotheken, die für den Systemstart benötigt werden.
-\item \texttt{/media} \\ Externe Datenträger werden hier erscheinen.
-\item \texttt{/mnt} \\ Interne Datenträger gehören hier hin.
-\item \texttt{/proc} \\ Auch Prozesse sind Dateien. Diese kann man hier manipulieren.
-\item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von \texttt{/home}!
-\item \texttt{/sbin} \\ Weitere Programme, die für den Systemstart nötig sind (und nur vom Administrator (root) ausgeführt werden dürfen!).
-\item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern.
-\item \texttt{/tmp} \\ (temp) Hier kann jeder Daten ablegen, die beim nächsten Neustart automatisch gelöscht werden.
-\item \texttt{/usr} \\ Programme, Bibliotheken und Dokumentation(!)
-\item \texttt{/var} \\ Programmdaten (z.B. die Dateien eines Datenbankservers)
+\item \texttt{/} \\ Das Wurzelverzeichnis („root-Verzeichnis“), der Anfang von allem sozusagen, die Wurzel
+\item \texttt{/bin} \\ Wichtige Binärdateien (Programme), die für den Systemstart benötigt werden
+\item \texttt{/boot} \\ Betriebssystem-Kernel und Bootloader-Konfiguration
+\item \texttt{/dev} \\ Auch Geräte sind unter Linux Dateien, solche 
+speziellen findet man hier; z.\,B. ist \texttt{/dev/sda} die erste Festplatte des Systems.
+\item \texttt{/etc} \\ Globale Konfigurationsdateien des Systems (benutzerspezifische liegt in \texttt{/home})
+\item \texttt{/home} \\ Benutzerdaten: Dokumente, Bilder, Konfigurationen -- alles, was von einem Benutzer generiert wurde
+\item \texttt{/lib} \\ Wichtige Bibliotheken, die für den Systemstart benötigt werden
+\item \texttt{/media} \\ Externe Datenträger werden hier eingehängt
+\item \texttt{/mnt} \\ Interne Datenträger gehören hier hin\footnote{Je nach verwendetem System fällt die Unterscheidung zwischen \texttt{/media} und \texttt{/mnt} weg.}
+\item \texttt{/proc} \\ Auch Prozesse sind Dateien, die man hier manipulieren kann
+\item \texttt{/root} \\ Das Homeverzeichnis des Administrators (root), immer außerhalb von \texttt{/home}
+\item \texttt{/sbin} \\ Weitere Programme, die für den Systemstart nötig sind (und nur vom Administrator (root) ausgeführt werden dürfen)
+\item \texttt{/sys} \\ Hier kann man Einstellungen des Kernels zur Laufzeit verändern
+\item \texttt{/tmp} \\ Hier kann jeder temporäre Daten ablegen, die beim nächsten Neustart automatisch gelöscht werden
+\item \texttt{/usr} \\ Programme, Bibliotheken und Dokumentation
+\item \texttt{/var} \\ Programmdaten (z.\,B. die Dateien eines Webservers)
 \item \texttt{swap} \\ Das Äquivalent zur Auslagerungsdatei unter Windows.
 \end{itemize}
 
 
-\section{ Rechte}
+\section{Rechte}
 \subsection{Wer ist Wurzel?}
-\glqq root \grqq ~wird der Administrator genannt. Er darf überall Dateien 
+„root“ wird der Administrator genannt. Er darf überall Dateien 
 und Ordner anlegen, ändern, löschen, etc. Dabei ist es egal, wem die 
 Dateien/Ordner gehören. Um ein Programm mit root-Rechten auszuführen, 
 schreibt man:
@@ -243,11 +246,14 @@ sudo su
 \end{lstlisting} 
 eine ganze Session als root starten.
 
-sudo ist ein Programm, welches in vielen Linux-Distributionen standardmäßig
-enthalten ist. Ansonsten kann man es nachträglich installieren (siehe unten).
+\texttt{sudo} ist ein Programm, welches in vielen Linux-Distributionen standardmäßig
+enthalten ist. Ansonsten kann man es nachträglich installieren (siehe Abschnitt\,\ref{sec:Software}).
+
+Befehle sollte man nur dann als root ausführen, wenn man genau weiß, was die Befehle bewirken!
+Wenn man Befehle aus dem Internet kopiert, sollte man sich \emph{immer} darüber informieren, was die Befehle tun (siehe Abschnitt\,\ref{sec:man}).
 
 \subsection{Dateirechte ändern}
-root kann außerdem die Dateirechte von beliebigen Dateien ändern. Also ändern, 
+root kann außerdem die Dateirechte von beliebigen Dateien ändern, also ändern, 
 wer eine bestimmte Datei lesen, schreiben oder ausführen darf.  
 \begin{itemize}
 \item den Besitzer einer beliebigen Datei/eines Ordners ändern:
@@ -283,8 +289,8 @@ oder auch mehrere Operationen auf einmal, z.B.
 \begin{lstlisting}
 chmod a-w,u+wx <dateiname>
 \end{lstlisting}
-um in einem Befehl allen die Schreibberechtigung zu entziehen (a-w) und dem
-Besitzer Schreib- und Ausführrechte zu geben (u+wx).
+um in einem Befehl allen die Schreibberechtigung zu entziehen (\texttt{a-w}) und dem
+Besitzer Schreib- und Ausführrechte zu geben (\texttt{u+wx}).
 
 \end{itemize}   
 
@@ -300,10 +306,11 @@ keine fremden Dateien darin enthalten sind)
 \end{itemize}
 
 \section{Software}
+\label{sec:Software}
 \subsection{Pakete}
-Unter Linux wird Software meistens in so genannten Paketen angeboten. 
-Ein Paket enthällt neben der eigentlichen Software noch weitere 
-Informationen (z.B. welche andere Software zur Benutzung benötigt wird) 
+Unter Linux wird Software meistens in sogenannten Paketen angeboten. 
+Ein Paket enthält neben der eigentlichen Software noch weitere 
+Informationen (z.\,B. welche andere Software zur Benutzung benötigt wird) 
 und integriert die Software bestmöglich in das System. Die meisten 
 Anbieter (Distributionen) fassen Paketsammlungen als Repositories zusammen. 
 Das sind (meistens) Webserver mit vielen Paketen und einem Index dieser, 
@@ -324,54 +331,58 @@ nicht benötigt, außer er möchte explizit ein Paket von Hand installieren
 und nicht aus dem Repository.
 \item \texttt{apt} \\ 
 Ist ein einfaches Tool zur Paketverwaltung. Man kann damit Pakete suchen, 
-installieren, deinstallieren, Paketlisten verwalten, etc.
+installieren, deinstallieren, Paketlisten verwalten etc.
 \item \texttt{aptitude} \\ 
-Ist ein fortschrittlicherer Paketverwalter der auf apt aufsetzt (arbeitet 
-also nicht ohne apt). \texttt{aptitude} kann Paketabhängigkeiten besser 
+Ist ein fortschrittlicherer Paketverwalter der auf \texttt{apt} aufsetzt (arbeitet 
+also nicht ohne \texttt{apt}). \texttt{aptitude} kann Paketabhängigkeiten besser 
 auflösen und räumt beim Deinstallieren von Paketen besser auf als \texttt{apt}.
+\item Diverse grafische Programme \\
+Neben der Installation über die Konsole kann man Software unter Linux auch über grafische Programme installieren, die ähnlich einfach zu bedienen sind wie die App-Stores auf Handys. Meistens ist ein solches Programm schon vorinstalliert und im Anwendungsmenü unter Begriffen wie „Softwarecenter“ oder „Programmverwaltung“ zu finden. Einzelne, von Websites heruntergeladene Pakte\footnote{Im Linux-Umfeld im Gegensatz zum Windows-Umfeld eher selten gemacht.} können in der Regel einfach durch Doppelklick installiert werden.
 \end{itemize}
 
 \subsection{Was man mit Paketen so alles anstellen kann}
- In der Konsole kannst du Pakete mit apt-get oder aptitude (de)installieren 
+ In der Konsole kannst du Pakete mit \texttt{apt} oder \texttt{aptitude} (de)installieren 
 und einiges mehr. Zum Installieren von Software benötigst du Rootrechte. 
 Bei den hier vorgestellten Befehlen kannst du, je nach persönlicher Vorliebe,  
-\texttt{apt-get} oder \texttt{apt-cache} durch \texttt{aptitude} ersetzen.
+\texttt{apt} durch \texttt{aptitude} ersetzen.
 \begin{itemize}
 \item Paket, das <Suchbegriff> in Name oder Beschreibung beinhaltet, suchen: 
 \begin{lstlisting}
-apt-cache search <Suchbegriff>
+apt search <Suchbegriff>
 \end{lstlisting} 
 \item Paket <Paketname> installieren:
 \begin{lstlisting}
-sudo apt-get install <Paketname>
+sudo apt install <Paketname>
 \end{lstlisting} 
 \item Paket <Paketname> deinstallieren:
 \begin{lstlisting}
 sudo apt-get remove <Paketname>
 \end{lstlisting} 
 \item Aktualisieren von Paketen \\
-Im Normalfall wird dein Ubuntu dich durch ein auffälliges Symbol irgendwo 
-in der Taskleiste darauf hinweisen, dass es Aktualisierungen für bestimmte 
+Im Normalfall wird dein Betriebssystem dich durch ein auffälliges Symbol irgendwo 
+in der Kontrollleiste darauf hinweisen, dass es Aktualisierungen für bestimmte 
 Pakete gibt. Willst du diesen Vorgang von der Shell aus aufrufen, benutzt 
 du die Befehle:
 \begin{lstlisting}
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 \end{lstlisting} 
+Anders als man vielleicht zunächst vermutet installiert der erste Befehl keine Updates, sondern aktualisiert nur die 
 \item Müllbeseitigung \\
-Hin und wieder finden sich \glqq Karteileichen\grqq ~auf eurem System
+Hin und wieder finden sich „Karteileichen“ auf eurem System, die man mit
 \begin{lstlisting}
-sudo apt-get autoremove
+sudo apt autoremove
+sudo apt clean
 \end{lstlisting} 
-sollte diese beseitigen (gilt nur für \texttt{apt-get}, nicht für \texttt{aptitude}).
+beseitigen kann. Der erste Befehl entfernt alle Softwarepakete, die automatisch als Abhängigkeit von anderen Paketen installiert wurde. Der zweite Befehl leert den Paket-Zwischenspeicher.
 \end{itemize}
 
 \subsection{Software entwickeln}
 Im ersten und zweiten Semester wirst du programmieren müssen. Viele von 
 euch haben das vielleicht noch gar nicht oder nur innerhalb von grafischen
-Entwicklungsumgebungen, wie Eclipse oder NetBeans, gemacht. Wenn du in 
+Entwicklungsumgebungen, wie Eclipse oder IntelliJ, gemacht. Wenn du in 
 der Shell deine Programme kompilieren und ausführen willst, benötigst du 
-die folgenden Befehle. Beide Compiler unterstützen eine Vielzahl von
+die folgenden Befehle. Beide Compiler („Übersetzer“) unterstützen eine Vielzahl von
 weiteren Parametern, die du jedoch zunächst nicht benötigen wirst.
 
 \subsubsection{Java}
@@ -399,9 +410,10 @@ gcc -o <Programmname> <Dateiname.c>
 \end{itemize}
 
 \section{manpages}
+\label{sec:man}
 Du wirst feststellen, dass wir euch bei weitem nicht alle Befehle und 
 Parameter hier aufzeigen, die es so gibt. Zum Beispiel haben wir hier 
-nichts zum Thema "Netzwerke einrichten" gesagt. Wann immer du nicht 
+nichts zum Thema „Dateien suchen“ gesagt. Wann immer du nicht 
 weißt, wie du einen Befehl benutzen solltest oder was er vielleicht 
 noch alles kann, lohnt es sich, die manpage (Gebrauchsanleitung, engl. 
 manual) zu diesem Befehl zu lesen. Die manpage eines Programms rufst du 
@@ -415,29 +427,69 @@ man man
 \end{lstlisting} 
 auf.
 
+Typische Befehle, die sehr, sehr nützlich sind, i.\,d.\,R. auf allen Systemen zur Verfügung stehen und über die man sich informieren sollte:
+
+\begin{itemize}
+    \item \texttt{echo}\\Text auf der Konsole ausgeben
+    \item \texttt{find}\\Suchen von Dateien
+    \item \texttt{grep}\\Suchen innerhalb einer Datei
+    \item \texttt{sed}\\Ersetzen von Zeichen in Text anhand 
+    \item \texttt{cat}\\Inhalte mehrere Dateien ausgeben
+    \item \texttt{less}\\Seitenweises lesen von Textdateien
+    \item \texttt{file}\\Anzeigen des Dateityps
+    \item \texttt{curl}\\Herunterladen von Dateien
+    \item \texttt{wc}\\Zählen von Zeichen, Wörtern und Zeilen
+    \item \texttt{tar}\\tar-Archive erstellen
+    \item \texttt{zip}\\zip-Archive erstellen
+    \item \texttt{nano}\\Einfacher Texteditor
+    \item \texttt{vi}\\Sehr mächtiger Texteditor
+    \item \texttt{alias}\\Kurze Aliase für Befehle anlegen
+    \item \texttt{xdg-open}\footnote{unter macOS: \texttt{open}}\\Dateien mit dem Standardprogramm öffnen
+\end{itemize}
+
+Diese Befehle lassen sich in kleinen Skripten kombinieren, um Aufgaben automatisiert ausführen zu können. Dabei kann man z.\,B. Variablen, Verzweigungen und Schleifen benutzen.
+
+Außerdem gibt es für einige spezielle Aufgaben gute Programme, die in der Regel nicht standardmäßig installiert sind:
+
+\begin{itemize}
+    \item \texttt{ffmpeg}\\Konvertieren und Manipulation von Audio- und Video-Dateien 
+    \item \texttt{pdftk}\\Manipulation von PDF-Dokumenten
+    \item \texttt{csvcut}\\Spalten von CSV-Tabellen ausschneiden
+    \item \dots
+\end{itemize}
+
+\section{Verbindung von Befehlen und Schreiben in Dateien}
+
+Wenn ein Befehl eine „normale“ Ausgabe auf der Konsole macht, landet diese in der sogenannten Standard-Ausgabe (stdout). Die Standardausgabe kann man mit \texttt{>} in eine Datei umleiten. Mit \texttt{ls > /tmp/dateien} wird beispielsweise die Ausgabe von \texttt{ls} in der Datei \texttt{/tmp/dateien} gespeichert.
+
+Die Standard-Ausgabe kann man als Eingabe für einen anderen Befehl benutzen. Dazu benutzt man das Pipe-Symbol \texttt{|}\footnote{Auf deutschen Tastaturen mit AltGr+< eingebbar, bei Apple-Tastaturen mit Alt+7}. Zum Beispiel sucht folgende Befehlsfolge zuerst alle Zeilen in der Datei \texttt{foo.txt}, die „Beispiel“ enthalten, und ersetzt dann alle Vorkommen von „schlecht“ durch „gut“: \texttt{grep Beispiel foo.txt | sed "s/schlecht/gut/"}
+
+Mehrere Befehle können mit \texttt{\&\&} nacheinander ausgeführt werden. Der nachfolgende Befehl wird nur ausgeführt, wenn es beim vorhergegangenen Befehl keinen Fehler gab.
+
+Darüber hinaus gibt es noch die Standard-Eingabe und die Fehler-Ausgabe, mit der man ähnlich arbeiten kann. Informationen gibt es u.\,a. mit \texttt{man stdout} und \texttt{man sh} (Abschnitt „Redirections“) und in diversen Internetquellen.
+
 \section{Editoren}
 Es gibt viele Konsoleneditoren. Diese sind jedoch nicht immer intuitiv 
 benutzbar. An dieser Stelle möchten wir daher nur darauf hinweisen, dass 
-es sie gibt. Beispiele für weit verbreitete Konsoleneditoren sind 
-\textbf{nano} oder \textbf{vi/vim}.
+es sie gibt. Beispiele für weit verbreitete Konsoleneditoren sind der einfache Editor
+\emph{nano} und die sehr mächtigen Editoren \emph{vim} und \emph{emacs}, die aber eine sehr steile Lernkurve haben.
 
 Darüber hinaus gibt es -- wie unter Windows -- auch grafische Editoren, 
 die sich ohne größere Vorkenntnisse bedienen lassen. Je nach Distribution
 sind unterschiedliche Editoren bereits vorinstalliert. Beispiele sind
-\textbf{kate}, \textbf{gedit}, \textbf{kedit}, \textbf{kwrite}, \textbf{geany}, ...
+\emph{kate}, \emph{gedit}, \emph{kedit}, \emph{kwrite}, \emph{geany}, \dots. Egal welchen Editor man am Ende verwendet: Es ist wichtig, dass man mit seinen Funktionen vertraut ist. Typische Funktionen eines Texteditors für Programmierer sind Syntax-Highlighting, automatisches Einrücken, Tastenkombinationen für das Auskommentieren von Codeblöcken, ein integriertes Terminal usw.
 
 
 \section{Lustiges}
 Weil du bis ganz zum Ende durchgehalten hast, gibt es nun noch einen 
 Tipp von uns, was du bei Gelegenheit mal ausprobieren kannst.
 \begin{itemize} 
-\item \texttt{cowsay}
+\item \texttt{cowsay Hallo}
 \item \texttt{sl}
 \item \texttt{apt-get moo}
 \item \texttt{aptitude moo}
 \end{itemize}
 
-\bigskip
 \center{\huge{Wir wünschen dir nun viel Spaß beim Ausprobieren.}}
 
 \end{document}
